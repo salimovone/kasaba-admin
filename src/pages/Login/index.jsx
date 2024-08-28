@@ -3,70 +3,39 @@ import Background from "./Background";
 import { useFormik } from "formik";
 import { loginSchema } from "../../schemas";
 import Axios from "../../services/Axios";
-import useSignIn from "react-auth-kit/hooks/useSignIn";
+import { useIsAuthenticated, useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
-import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 
 const Login = () => {
-
-  const signIn = useSignIn()
-  const navigate = useNavigate()
-  const isAuth = useIsAuthenticated()
-
+  const signIn = useSignIn();
+  const navigate = useNavigate();
+  const isAuth = useIsAuthenticated();
 
   const onSubmit = async (values, actions) => {
-    // alert(JSON.stringify(values, null, 2));
     try {
-      const form = new FormData()
-      form.append("username", values.id)
-      form.append("password", values.password)
+      const form = new FormData();
+      form.append("username", values.id);
+      form.append("password", values.password);
       const response = await Axios("/auth/login/", {
-        method: "post", 
-        data: form
-      })
-
-      // signIn({
-      //   token: response.data.key,
-      //   expiresIn: 3600,
-      //   tokenType: "Bearer",
-      //   authState: {username: values.id}
-      // })
-      
-
+        method: "post",
+        data: form,
+      });
 
       const signInResult = signIn({
-        auth: {
-          token: response.data.key,
-          type: "Token"
-        },
-        userState: {username: values.id}
-      })
+        token: response.data.key,
+        expiresIn: 3600,
+        tokenType: "Bearer",
+        authState: { username: values.id },
+      });
 
       if (signInResult) {
-        navigate('/'); // Kirish muvaffaqiyatli bo'lsa, bosh sahifaga o'tish
+        navigate("/"); // Kirish muvaffaqiyatli bo'lsa, bosh sahifaga o'tish
       }
 
-      console.log("sign in result: ",signInResult);
-      console.log("is auth: ", isAuth);
+      console.log("sign in result: ", signInResult);
+      console.log("is auth: ", isAuth());
       console.log("token: ", response.data.key);
       console.log("cookie: ", document.cookie);
-      
-      
-
-      // .then((response) => {
-      //   console.log(response);
-      //   signIn({
-      //     auth: {
-      //       token: response.data.token,
-      //       tokenType: "Bearer",
-      //     },
-      //     // expiresIn: 3600,
-      //     authState: { username: values.id }
-      //   })
-      //   navigate('/')
-      // });
-
-
     } catch (error) {
       throw new Error("error: " + error.message);
     }
@@ -85,9 +54,9 @@ const Login = () => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      id: "",
+      id: "AD1460165",
       email: "",
-      password: "",
+      password: "AD1460165",
     },
     onSubmit,
     validationSchema: loginSchema,
@@ -112,7 +81,6 @@ const Login = () => {
           {errors.id && touched.id && values.id ? (
             <p className="text-xs -mt-3 text-red-700">{errors.id}</p>
           ) : null}
-
           <br />
           <label htmlFor="email">Elektron pochta:</label> <br />
           <input

@@ -7,7 +7,7 @@ const LastNews = ({image, title, text}) => {
   const sendToPage = () => {
     navigate("/news-page", {state: {image, title, text}})
   }
-
+  // eslint-disable-next-line
   const [textColor, setTextColor] = useState("white");
   //setTextColor("white") //warninglarni yo'qotish uchun, keyinchalik o'chirib yuboriladi!!
 
