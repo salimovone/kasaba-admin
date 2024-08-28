@@ -1,13 +1,36 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  min-width: 1024px;
+  max-width: 100vw;
+  width: 100%;
+  min-height: auto;
+  max-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  grid-template-columns: 2fr 10fr;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.btn-neu {
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.card-neu {
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.bg-active {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    145deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 45%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
