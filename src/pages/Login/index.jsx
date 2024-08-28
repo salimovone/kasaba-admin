@@ -31,11 +31,6 @@ const Login = () => {
       if (signInResult) {
         navigate("/"); // Kirish muvaffaqiyatli bo'lsa, bosh sahifaga o'tish
       }
-
-      console.log("sign in result: ", signInResult);
-      console.log("is auth: ", isAuth());
-      console.log("token: ", response.data.key);
-      console.log("cookie: ", document.cookie);
     } catch (error) {
       throw new Error("error: " + error.message);
     }
