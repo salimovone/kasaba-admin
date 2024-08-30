@@ -12,3 +12,9 @@ export const loginSchema = yup.object().shape({
   email: yup.string().email("to'g'ri email kiriting"),
   password: yup.string().required("parol kiritish majburiy"),
 });
+
+
+export const newsSchema = yup.object().shape({
+  title: yup.string().required().min(3).max(50),
+  text: yup.string().required().min(15).max(2000),
+})

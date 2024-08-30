@@ -7,6 +7,7 @@ import Xodimlar from "../pages/Xodimlar";
 import Applications from "../pages/Applications";
 import News from "../pages/News";
 import NewsPage from "../pages/NewsPage";
+import AddNews from "../pages/AddNews";
 
 const routes = [
     {
@@ -47,6 +48,11 @@ const routes = [
         path: "/news-page",
         hideSidebar: true
     },
-
+    {
+        id:6,
+        element: <AddNews />,
+        path: "/news-mode",
+        hideSidebar: true
+    }
 ]
 export default routes

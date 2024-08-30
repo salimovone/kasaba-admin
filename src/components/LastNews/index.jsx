@@ -2,7 +2,7 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const LastNews = ({image, title, text}) => {
+const LastNews = ({image, title, text, className}) => {
   const navigate = useNavigate()
   const sendToPage = () => {
     navigate("/news-page", {state: {image, title, text}})
@@ -54,7 +54,7 @@ const LastNews = ({image, title, text}) => {
   return (
     <div
       onClick={sendToPage}
-      className="hover:*:opacity-100 cursor-pointer h-full max-h-48 min-h-full max-2xl:max-h-32 overflow-hidden rounded-xl flex flex-col card-neu py-3 px-6 justify-between relative"
+      className={"hover:*:opacity-100 cursor-pointer h-full max-h-48 min-h-full max-2xl:max-h-32 overflow-hidden rounded-xl flex flex-col card-neu py-3 px-6 justify-between relative " + className}
       style={{
         backgroundImage: `url(${image})`,
         backgroundPosition: "center",

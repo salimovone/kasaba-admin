@@ -3,13 +3,12 @@ import Background from "./Background";
 import { useFormik } from "formik";
 import { loginSchema } from "../../schemas";
 import Axios from "../../services/Axios";
-import { useIsAuthenticated, useSignIn } from "react-auth-kit";
+import { useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const signIn = useSignIn();
   const navigate = useNavigate();
-  const isAuth = useIsAuthenticated();
 
   const onSubmit = async (values, actions) => {
     try {
