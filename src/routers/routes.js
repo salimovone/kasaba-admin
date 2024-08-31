@@ -8,6 +8,7 @@ import Applications from "../pages/Applications";
 import News from "../pages/News";
 import NewsPage from "../pages/NewsPage";
 import AddNews from "../pages/AddNews";
+import EditNews from "../pages/EditNews";
 
 const routes = [
     {
@@ -52,6 +53,12 @@ const routes = [
         id:6,
         element: <AddNews />,
         path: "/news-mode",
+        hideSidebar: true
+    },
+    {
+        id:7,
+        element: <EditNews />,
+        path: "/edit-news",
         hideSidebar: true
     }
 ]

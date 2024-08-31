@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import Axios from "../../services/Axios";
 import LastNews from "../../components/LastNews";
 import AddNews from "../../components/AddNews";
+import { useNavigate } from "react-router-dom";
+import { getCookie } from "../../services/helper";
 
 const News = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate()
 
   const fetchData = async () => {
     try {
-      Axios("/news/news/").then((res) => {
-        setData(res.data);
+      Axios("/news/news/", {headers: {Authorization: `Basic ${getCookie("_auth")}`}}).then((res) => {
+        setData(res.data);  
       });
     } catch (error) {
       throw new Error(error.message);
@@ -35,8 +38,8 @@ const News = () => {
           ))}
         </React.Fragment>
       </div>
-      <div className="absolute bottom-0 w-full flex h-min items-center justify-center bg-red-500">
-        <span>salom</span>
+      <div onClick={()=>navigate("/edit-news")} className="absolute bottom-1 hover:bg-sky-500 hover:text-white w-full flex h-min items-center justify-center border border-sky-600 rounded cursor-pointer">
+        <span className="uppercase">tahrirlash</span>
       </div>
     </div>
   );

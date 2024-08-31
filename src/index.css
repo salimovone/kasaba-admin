@@ -65,3 +65,9 @@
   transform: skew(-10deg) translateY(8px);
   box-shadow: 0 0 0 var(--😀😀😀);
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

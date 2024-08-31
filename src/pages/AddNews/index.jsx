@@ -24,7 +24,7 @@ const AddNews = () => {
         method: "post",
         data: form,
         // headers: {
-        //   Authorization: getCookie("_auth")
+        //   Authorization: `Basic ${getCookie("_auth")}`
         // }
       })
     } catch (error) {}    
