@@ -29,9 +29,12 @@ const EditNewsCard = (props) => {
     }
   };
 
+  const handleEdit = () => {
+    navigate("/news-mode", { state: { id: props.id, image: props.image, title: props.title, text: props.text } })
+  }
+
   return (
     <div
-      onDoubleClick={() => navigate("/news-page", { state: props })}
       className="w-full border overflow-y-auto border-sky-400 rounded-md px-4 py-2 flex justify-between mb-2 items-center"
     >
       <div className=" flex justify-center items-center gap-2">
@@ -46,7 +49,7 @@ const EditNewsCard = (props) => {
       <div className="flex gap-2 items-center">
         {dlt === "h-6 w-6" && (
           <div
-            onClick={() => navigate("/news-mode", { state: props })}
+            onClick={handleEdit}
             className="bg-yellow-300 text-white font-bold rounded-full h-6 w-6 flex-center cursor-pointer"
           >
             <RiEditCircleLine />

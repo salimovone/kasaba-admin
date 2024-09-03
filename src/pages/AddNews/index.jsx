@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import { newsSchema } from "../../schemas";
 import Axios from "../../services/Axios";
 import { getCookie } from "../../services/helper";
+import { useLocation } from "react-router-dom";
 
 const AddNews = () => {
   const [backgroundImage, setBackgroundImage] = useState("");
   const [image, setImage] = useState(null);
-
+  const location = useLocation()
+  console.log(location.state);
+  
   
   
   const onSubmit = async (values, actions) => {
@@ -39,8 +42,8 @@ const AddNews = () => {
     handleSubmit,
     handleChange,
     handleBlur,
-    handleReset,
-    setFieldValue,
+    // handleReset,
+    // setFieldValue,
   } = useFormik({
     initialValues: {
       title: "",

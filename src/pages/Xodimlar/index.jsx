@@ -1,11 +1,15 @@
 import React from 'react'
-import { useSignOut } from 'react-auth-kit'
+import Pagination from '../../components/Pagination'
+import StaffList from '../../containers/StaffList'
 
 const Xodimlar = () => {
-  const signOut = useSignOut()
   return (
-    <div>
-      <button onClick={signOut}>sign out</button>
+    <div className='relative w-full h-full pb-10 pt-8 pr-4'>
+      <StaffList />
+
+      <div className="w-full absolute bottom-2">
+        <Pagination /> {/* disabled buttons */}
+      </div>
     </div>
   )
 }
