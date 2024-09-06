@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { newsSchema } from "../../schemas";
 import Axios from "../../services/Axios";
-import { getCookie } from "../../services/helper";
+// import { getCookie } from "../../services/helper";
 import { useLocation } from "react-router-dom";
 
 const AddNews = () => {

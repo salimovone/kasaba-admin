@@ -41,7 +41,6 @@ const EditNewsCard = (props) => {
         <img
           src={props.image}
           className="h-8 transition-all cursor-pointer"
-          alt="image here"
           onClick={() => setPopup(popupStyle)}
         />
         {props.title}
