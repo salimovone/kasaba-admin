@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import Axios from "../../services/Axios";
-
 const StaffElement = ({ profile_image, name, last_name, profession }) => {
   return (
     <div className="border border-sky-300 w-full px-4 py-2 rounded-lg mb-2 flex items-center justify-between">
