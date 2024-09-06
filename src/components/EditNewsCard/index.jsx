@@ -42,6 +42,7 @@ const EditNewsCard = (props) => {
           src={props.image}
           className="h-8 transition-all cursor-pointer"
           onClick={() => setPopup(popupStyle)}
+          alt=""
         />
         {props.title}
       </div>
@@ -79,7 +80,7 @@ const EditNewsCard = (props) => {
         <img
           src={props.image}
           className="max-w-[80%] cursor-default transition-all"
-          alt="image here"
+          alt=""
         />
       </div>
     </div>

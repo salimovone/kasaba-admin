@@ -11,7 +11,7 @@ export const getCookie = (name) => {
   let elements = document.cookie.split("; ");
   let myItem = undefined
 
-  elements.map(itm=>{
+  elements.forEach(itm=>{
     let elem = itm.split("=")
     if(elem[0]===name) myItem = elem[1]
   })
