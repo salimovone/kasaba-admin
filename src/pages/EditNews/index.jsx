@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getCookie } from "../../services/helper";
 import Axios from "../../services/Axios";
 import EditNewsCard from "../../components/EditNewsCard";
+import Loading from "../../components/Loading";
 
 const EditNews = () => {
   const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ const EditNews = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      Axios("/news/news/", {
+      await Axios("/news/news/", {
         headers: { Authorization: `Basic ${getCookie("_auth")}` },
       }).then((res) => {
         setData(res.data);
@@ -29,15 +30,10 @@ const EditNews = () => {
 
   return (
     <div className="pt-8">
-      {!loading ? (
-        <>
-          {data.map((e) => (
-            <EditNewsCard {...e} key={e.id} refresh={setRefresh} />
-          ))}
-        </>
-      ) : (
-        <div className="w-full h-full flex-center">Loading...</div>
-      )}
+      <Loading loading={loading} />
+      {data.map((e) => (
+        <EditNewsCard {...e} key={e.id} refresh={setRefresh} />
+      ))}
     </div>
   );
 };

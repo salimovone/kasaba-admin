@@ -2,7 +2,7 @@ import React from "react";
 import Background from "./Background";
 import { useFormik } from "formik";
 import { loginSchema } from "../../schemas";
-import Axios from "../../services/Axios";
+import { AxiosLogin } from "../../services/Axios";
 import { useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ const Login = () => {
       const form = new FormData();
       form.append("username", values.id);
       form.append("password", values.password);
-      const response = await Axios("/auth/login/", {
+      const response = await AxiosLogin("/auth/login/", {
         method: "post",
         data: form,
       });

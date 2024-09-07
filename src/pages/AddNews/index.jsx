@@ -4,17 +4,13 @@ import React, { useState } from "react";
 import { newsSchema } from "../../schemas";
 import Axios from "../../services/Axios";
 // import { getCookie } from "../../services/helper";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 const AddNews = () => {
   const [backgroundImage, setBackgroundImage] = useState("");
   const [image, setImage] = useState(null);
-  const location = useLocation()
-  console.log(location.state);
   
-  
-  
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (values) => {
     const form = new FormData()
     form.append("title", values.title)
     form.append("text", values.text)
@@ -30,7 +26,13 @@ const AddNews = () => {
         //   Authorization: `Basic ${getCookie("_auth")}`
         // }
       })
-    } catch (error) {}    
+    } catch (error) {
+      throw new Error(error.message)
+    } finally {
+      resetForm()
+      setImage(null)
+      setBackgroundImage("")
+    }
   };
 
 
@@ -44,6 +46,7 @@ const AddNews = () => {
     handleBlur,
     // handleReset,
     // setFieldValue,
+    resetForm
   } = useFormik({
     initialValues: {
       title: "",
@@ -78,7 +81,7 @@ const AddNews = () => {
           ></div>
           <input
             type="file"
-            accept=".jpeg .jpg .png .jfif .pjpeg .pjp .webp"
+            accept="*.jpeg *.jpg *.png *.jfif *.pjpeg *.pjp *.webp"
             className="w-full h-48 opacity-0 absolute z-50 cursor-pointer"
             onChange={handleFileChange}
             id="image"
@@ -110,7 +113,7 @@ const AddNews = () => {
           id="text"
           type="text"
           placeholder="Ma'lumot: "
-          className="w-full h-80 outline-none border mt-4 py-3 px-5 rounded-2xl border-sky-500"
+          className="w-full h-72 outline-none border mt-4 py-3 px-5 rounded-2xl border-sky-500"
           onChange={handleChange}
           onBlur={handleBlur}
         />

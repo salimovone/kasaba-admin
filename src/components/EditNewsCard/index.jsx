@@ -18,7 +18,7 @@ const EditNewsCard = (props) => {
       setDlt("h-8 w-8");
     } else {
       setLoading(true);
-      Axios(`/news/news/${props.id}/`, { method: "delete" })
+      await Axios(`/news/news/${props.id}/`, { method: "delete" })
         .then(() => {
           props.refresh((prev) => ++prev);
         })
