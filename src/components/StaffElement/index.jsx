@@ -1,14 +1,19 @@
 import { useState } from "react";
-import Axios from "../../services/Axios"
+import Axios from "../../services/Axios";
 import { RiDeleteBin6Fill, RiEditCircleLine } from "react-icons/ri";
 import { TiDeleteOutline } from "react-icons/ti";
-import Loading from "../Loading"
 
-const StaffElement = ({ profile_image, name, last_name, profession, user, itm }) => {
+const StaffElement = ({
+  profile_image,
+  name,
+  last_name,
+  profession,
+  user,
+  refresh,
+  nonLoader,
+}) => {
   const [dlt, setDlt] = useState("h-6 w-6");
   const [loading, setLoading] = useState(false);
-  console.log(itm);
-  
 
   const handleDelete = async () => {
     if (dlt === "h-6 w-6") {
@@ -17,7 +22,9 @@ const StaffElement = ({ profile_image, name, last_name, profession, user, itm })
       setLoading(true);
       await Axios(`/employe/${user}/`, { method: "delete" })
         .then(() => {
-          // props.refresh((prev) => ++prev);
+          if (!nonLoader) {
+            refresh((prev) => ++prev);
+          }
         })
         .catch((err) => console.log(err))
         .finally(() => {
@@ -26,20 +33,18 @@ const StaffElement = ({ profile_image, name, last_name, profession, user, itm })
     }
   };
 
-  const handleEdit = () => {
-  };
+  const handleEdit = () => {};
 
   return (
-    <div className="border border-sky-300 w-full px-4 py-2 rounded-lg mb-2 flex items-center justify-between hover:bg-white">
-      <Loading loading={loading} />
+    <div className="border border-sky-300 w-full px-4 py-1 rounded-lg mb-1   flex items-center justify-between hover:bg-white">
       <div className="flex-center gap-4 text-slate-800">
         <div
-          className="w-16 h-16 rounded-full bg-cover bg-center"
+          className="w-8 h-8 rounded-full bg-cover bg-center"
           style={{
             backgroundImage: `url(https://afu1.pythonanywhere.com${profile_image})`,
           }}
         ></div>
-        <div className="">
+        <div className="text-sm leading-4">
           <span>
             {name} {last_name}
           </span>{" "}

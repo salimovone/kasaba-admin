@@ -110,7 +110,7 @@ const Login = () => {
           {errors.password && touched.password && values.password ? (
             <p className="text-xs -mt-3 text-red-700 mb-8">{errors.password}</p>
           ) : null}
-          <div className="w-full flex justify-between items-center text-sm">
+          <div className="w-full flex justify-between items-center text-xs">
             <span className="flex items-center gap-2">
               <input type="checkbox" id="remember" />
               <label htmlFor="remember">Meni eslab qol</label>
