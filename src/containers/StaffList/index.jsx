@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import StaffElement from '../../components/StaffElement';
+// import StaffElement from '../../components/StaffElement';
 import Loading from '../../components/Loading';
 import Axios from '../../services/Axios';
 import { useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ const StaffList = () => {
     const [refresh, setRefresh] = useState(0);
     const isVerifiedList = useSelector(state => state.staff.isVerifiedList);
 
-    const notVerifiedList = data.filter(item => !item.is_verified);
+    // const notVerifiedList = data.filter(item => !item.is_verified);
 
     const fetchData = async () => {
         setLoading(true);
@@ -77,7 +77,7 @@ const StaffList = () => {
                             </thead>
                             <tbody>
                                 {data
-                                    .filter(item => item.is_verified == true)
+                                    .filter(item => item.is_verified === true)
                                     .map((item, ind) => {
                                         return (
                                             <tr
@@ -96,7 +96,7 @@ const StaffList = () => {
                                                     {item.tel_number}
                                                 </td>
                                                 <td className='text-center'>
-                                                    {item.is_verified ==
+                                                    {item.is_verified ===
                                                     true ? (
                                                         <div className='text-[12px] bg-green-200 text-center rounded font-bold py-[3px] px-[4px] border border-green-500'>
                                                             Tasdiqlangan
@@ -165,7 +165,7 @@ const StaffList = () => {
                             </thead>
                             <tbody>
                                 {data
-                                    .filter(item => item.is_verified == false)
+                                    .filter(item => item.is_verified === false)
                                     .map((item, ind) => {
                                         return (
                                             <tr
@@ -184,7 +184,7 @@ const StaffList = () => {
                                                     {item.tel_number}
                                                 </td>
                                                 <td className='text-center'>
-                                                    {item.is_verified ==
+                                                    {item.is_verified ===
                                                     false ? (
                                                         <div className='text-[12px] bg-red-200 text-center rounded font-bold py-[3px] px-[4px] border border-red-500'>
                                                             Tasdiqlanmagan

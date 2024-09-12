@@ -51,19 +51,19 @@ const Applications = () => {
                                         {formattedDate}
                                     </td>
                                     <td>
-                                        {item.status == 'sd' ? (
+                                        {item.status === 'sd' ? (
                                             <div className='text-[12px] bg-green-200 text-center rounded font-bold py-[3px] px-[4px] border border-green-500'>
                                                 Yuborildi
                                             </div>
-                                        ) : item.status == 'rd' ? (
+                                        ) : item.status === 'rd' ? (
                                             <div className='text-[12px] bg-gray-200 text-center rounded font-bold py-[3px] px-[4px] border border-gray-500'>
                                                 Ko'rildi
                                             </div>
-                                        ) : item.status == 'ad' ? (
+                                        ) : item.status === 'ad' ? (
                                             <div className='text-[12px] bg-blue-200 text-center rounded font-bold py-[3px] px-[4px] border border-blue-500'>
                                                 Qabul qilindi
                                             </div>
-                                        ) : item.status == 'rj' ? (
+                                        ) : item.status === 'rj' ? (
                                             <div className='text-[12px] bg-red-200 text-center rounded font-bold py-[3px] px-[4px] border border-red-500'>
                                                 Rad etildi
                                             </div>
