@@ -20,7 +20,7 @@ const AddNews = () => {
         form.append('title', values.title);
         form.append('text', values.text);
         form.append('author', '1');
-        form.append('views', '3');
+        // form.append('views', '3');
         form.append('image', image);
         // await news
         //     .newsAdd(form)
@@ -46,6 +46,7 @@ const AddNews = () => {
             resetForm();
             setImage(null);
             setBackgroundImage('');
+            navigate("/news")
         }
     };
 
@@ -138,9 +139,6 @@ const AddNews = () => {
                     id='submit'
                     className='float-right neo-btn'
                     value={'Yuborish'}
-                    onClick={() => {
-                        navigate('/news');
-                    }}
                 />
             </form>
         </div>
