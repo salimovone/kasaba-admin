@@ -11,9 +11,17 @@ export const getCookie = (name) => {
   let elements = document.cookie.split("; ");
   let myItem = undefined
 
-  elements.forEach(itm=>{
+  elements.forEach(itm => {
     let elem = itm.split("=")
-    if(elem[0]===name) myItem = elem[1]
+    if (elem[0] === name) myItem = elem[1]
   })
   return myItem
 };
+
+export const deleteAllCookies = () => {
+  document.cookie.split(';').forEach(cookie => {
+    const eqPos = cookie.indexOf('=');
+    const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  });
+}

@@ -1,18 +1,18 @@
-import React from 'react'
-import InfoCards from '../../containers/InfoCards'
-import News from '../../containers/News'
-import { useSignOut } from 'react-auth-kit'
-
+import React from 'react';
+import InfoCards from '../../containers/InfoCards';
+import News from '../../containers/News';
+import DashboardArizaTable from '../../components/DashboardArizaTable';
 
 const Dashboard = () => {
-  const signOut = useSignOut()
-  return (
-    <div className='w-full py-2'>
-      <InfoCards />
-      <News />
-      <button onClick={signOut} className='bg-red-500 border border-red-700 text-white font-bold py-2 px-4 rounded float-right mt-8 mr-4'>SIGN OUT</button>
-    </div>
-  )
-}
+    return (
+        <div className='w-full p-[20px] pb-4 h-screen overflow-auto'>
+            <InfoCards />
+            <News />
+            <div className='mt-10'>
+                <DashboardArizaTable />
+            </div>
+        </div>
+    );
+};
 
-export default Dashboard
+export default Dashboard;
