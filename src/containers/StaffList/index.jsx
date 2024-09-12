@@ -8,7 +8,7 @@ import xodimlar from '../../services/xodimlar';
 const StaffList = () => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
-    const [refresh, setRefresh] = useState(0);
+    // const [refresh, setRefresh] = useState(0);
     const isVerifiedList = useSelector(state => state.staff.isVerifiedList);
 
     // const notVerifiedList = data.filter(item => !item.is_verified);
@@ -36,7 +36,7 @@ const StaffList = () => {
 
     useEffect(() => {
         fetchData();
-    }, [refresh]);
+    }, []);
     return (
         <div className='w-full overflow-y-auto h-screen pb-8  mt-16'>
             <Loading loading={loading} />

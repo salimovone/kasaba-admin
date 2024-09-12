@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { newsSchema } from '../../schemas';
 import Axios from '../../services/Axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import news from '../../services/news';
+// import news from '../../services/news';
 // import { getCookie } from "../../services/helper";
 // import { useLocation } from "react-router-dom";
 

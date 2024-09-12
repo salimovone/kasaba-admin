@@ -1,5 +1,5 @@
-import { BsArrowUpRightCircle } from 'react-icons/bs';
-import React, { useState } from 'react';
+// import { BsArrowUpRightCircle } from 'react-icons/bs';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LastNews = ({ image, title, text, className }) => {
@@ -8,7 +8,7 @@ const LastNews = ({ image, title, text, className }) => {
         navigate('/news-page', { state: { image, title, text } });
     };
     // eslint-disable-next-line
-    const [textColor, setTextColor] = useState('white');
+    // const [textColor, setTextColor] = useState('white');
     //setTextColor("white") //warninglarni yo'qotish uchun, keyinchalik o'chirib yuboriladi!!
 
     // const contrast = () => {

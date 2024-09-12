@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AboutOrg from '../../components/AboutOrg';
-import LastNews from '../../components/LastNews';
+// import LastNews from '../../components/LastNews';
 import Axios from '../../services/Axios';
 import { useNavigate } from 'react-router-dom';
 
