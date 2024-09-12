@@ -1,5 +1,7 @@
 import { service } from "..";
 
-export default {
+const mod = {
     employeDelete: (id) => service.delete('/employe/' + id)
 }
+
+export default mod

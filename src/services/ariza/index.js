@@ -1,5 +1,7 @@
 import { service } from "..";
 
-export default {
-    getAriza: () => service.get('/application')
+const mod = {
+    getAriza: () => service.get("/application")
 }
+
+export default mod
