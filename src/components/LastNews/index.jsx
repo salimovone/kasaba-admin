@@ -76,14 +76,16 @@ const LastNews = ({ image, title, text, className }) => {
         //         <BsArrowUpRightCircle />
         //     </div>
         // </div>
-        <div className='bg-white rounded-lg p-5 card-neu'>
+        <div className='bg-white rounded-lg p-5 break-all card-neu'>
             <div className='flex gap-4'>
-                <img
-                    src={image}
-                    className='w-[110px] object-cover h-[80px] rounded-md card-neu'
-                    alt=''
-                />
-                <div>
+                <div className='w-[30%]'>
+                    <img
+                        src={image}
+                        className='w-[100%] object-cover h-[80px] rounded-md card-neu'
+                        alt=''
+                    />
+                </div>
+                <div className='w-[60%]'>
                     <p className='text-xl font-medium line-clamp-1'>{title}</p>
                     <p className='text-[14px] text-gray-400 line-clamp-2'>
                         {text}

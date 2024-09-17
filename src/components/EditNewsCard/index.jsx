@@ -66,7 +66,6 @@ const EditNewsCard = props => {
                             <RiEditCircleLine />
                         </div>
                     )}
-
                     <button
                         disabled={loading}
                         onClick={() => setDlt('h-6 w-6')}
