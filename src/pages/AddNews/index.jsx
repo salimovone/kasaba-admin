@@ -1,9 +1,9 @@
 import { GrAdd } from 'react-icons/gr';
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { newsSchema } from '../../schemas';
 import Axios from '../../services/Axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // import news from '../../services/news';
 // import { getCookie } from "../../services/helper";
 // import { useLocation } from "react-router-dom";
@@ -11,42 +11,65 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const AddNews = () => {
     const [backgroundImage, setBackgroundImage] = useState('');
     const [image, setImage] = useState(null);
-    const navigate = useNavigate();
+    const [isEdit, setIsEdit] = useState({ type: false, id: null });
+    // const navigate = useNavigate();
     const { state } = useLocation();
-    console.log(state);
 
     const onSubmit = async values => {
         const form = new FormData();
         form.append('title', values.title);
         form.append('text', values.text);
         form.append('author', '1');
-        form.append('views', '3');
+        // form.append('views', '3');
         form.append('image', image);
         // await news
         //     .newsAdd(form)
-        //     .then(() => navigate('/news/news'))
+        //     .then(res => {
+        //         console.log(res.data);
+        //     })
         //     .catch(err => console.log(err))
         //     .finally(() => {
         //         resetForm();
         //         setImage(null);
         //         setBackgroundImage('');
         //     });
-        try {
-            await Axios({
-                url: 'news/news/',
-                method: 'post',
-                data: form,
-                // headers: {
-                //     Authorization: `Bearer ${getCookie('_auth')}`,
-                // },
-            });
-        } catch (error) {
-            throw new Error(error.message);
-        } finally {
-            resetForm();
-            setImage(null);
-            setBackgroundImage('');
+
+        if (isEdit.type) {
+            try {
+                await Axios({
+                    url: `news/news/${isEdit.id}`,
+                    method: 'put',
+                    data: form,
+                    // headers: {
+                    //     Authorization: `Bearer ${getCookie('_auth')}`,
+                    // },
+                });
+            } catch (error) {
+                throw new Error(error.message);
+            } finally {
+                resetForm();
+                setImage(null);
+                setBackgroundImage('');
+            }
+        } else {
+            try {
+                await Axios({
+                    url: 'news/news/',
+                    method: 'post',
+                    data: form,
+                    // headers: {
+                    //     Authorization: `Bearer ${getCookie('_auth')}`,
+                    // },
+                });
+            } catch (error) {
+                throw new Error(error.message);
+            } finally {
+                resetForm();
+                setImage(null);
+                setBackgroundImage('');
+            }
         }
+        setIsEdit({ type: false, id: null });
     };
 
     const {
@@ -59,6 +82,7 @@ const AddNews = () => {
         // handleReset,
         // setFieldValue,
         resetForm,
+        setValues,
     } = useFormik({
         initialValues: {
             title: '',
@@ -79,6 +103,15 @@ const AddNews = () => {
             reader.readAsDataURL(file);
         }
     };
+    useEffect(() => {
+        if (state) {
+            setValues({
+                title: state.title,
+                text: state.text,
+            });
+            setIsEdit({ type: true, id: state.id });
+        }
+    }, [setValues, state]);
     return (
         <div className='w-full pr-9 pt-8 p-4 '>
             <form onSubmit={handleSubmit}>
@@ -137,10 +170,10 @@ const AddNews = () => {
                     type='submit'
                     id='submit'
                     className='float-right neo-btn'
-                    value={'Yuborish'}
-                    onClick={() => {
-                        navigate('/news');
-                    }}
+                    value={isEdit.type ? 'Tahrirlash' : 'Yuborish'}
+                    // onClick={() => {
+                    //     navigate('/news');
+                    // }}
                 />
             </form>
         </div>

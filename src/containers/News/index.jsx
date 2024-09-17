@@ -30,19 +30,21 @@ const News = () => {
                 return (
                     <div
                         key={ind + 1}
-                        className='bg-white rounded-lg p-5 card-neu'
+                        className='bg-white break-all rounded-lg p-5 card-neu'
                     >
-                        <div className='flex gap-4'>
-                            <img
-                                src={item.image}
-                                className='w-[110px] object-cover h-[80px] rounded-md card-neu'
-                                alt=''
-                            />
-                            <div>
+                        <div className='flex  gap-4'>
+                            <div className='w-[25%]'>
+                                <img
+                                    src={item.image}
+                                    className='w-[100%] object-cover h-[80px] rounded-md card-neu'
+                                    alt=''
+                                />
+                            </div>
+                            <div className='w-[75%]'>
                                 <p className='text-xl font-medium line-clamp-1'>
                                     {item.title}
                                 </p>
-                                <p className='text-[14px] text-gray-400 line-clamp-3'>
+                                <p className='text-[14px]  text-gray-400 line-clamp-3'>
                                     {item.text}
                                 </p>
                             </div>
