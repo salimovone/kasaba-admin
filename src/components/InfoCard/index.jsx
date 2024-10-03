@@ -1,7 +1,7 @@
 import { BsInfoCircle } from 'react-icons/bs';
 import React from 'react';
 
-const InfoCard = props => {
+const InfoCard = (props) => {
     return (
         <div className='bg-white px-4 py-4 rounded-lg card-neu flex justify-between'>
             <div className=''>

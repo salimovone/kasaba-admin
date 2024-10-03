@@ -1,75 +1,53 @@
-import React, { useEffect, useState } from 'react'
-import Axios from '../../services/Axios'
-import { InfoCard } from '../../components'
+import React from 'react';
+import { useGetApplicationsQuery, useGetEmployeesQuery } from '../../services/redux';
+import { InfoCard } from '../../components';
 
 const InfoCards = () => {
-  const [appsLen, setAppsLen] = useState(0)
-  const [accepts, setAccepts] = useState([])
-  const [employeLength, setEmployeLength] = useState(0)
-
-  const fetchData = async () => {
-    try {
-      await Axios("/application/")
-        .then((response) => {
-          setAppsLen(response.data.length)
-          setAccepts(response.data.filter(e => e.status === "ad"))
-        })
-    } catch (err) {
-      throw new Error("error: " + err.message)
-    }
-  }
-
-  const fetchEmploye = async () => {
-    try {
-      await Axios("/employe/")
-        .then((response) => {
-          setEmployeLength(response.data.length)
-        })
-    } catch (err) {
-      throw new Error("error: " + err.message)
-    }
-  }
+  // RTK Query orqali ma'lumotlarni olish
+  const { data: applications = [], error: appError } = useGetApplicationsQuery();
+  const { data: employe = 0, error: empError } = useGetEmployeesQuery();
 
 
-  useEffect(() => {
-    fetchData()
-    fetchEmploye()
-  }, [])
+  // Qabul qilingan arizalarni filtrlaymiz
+  const acceptedApplications = applications.filter(app => app.status === "ad");
 
-  let InfoCardData = [
+  // Agar xatolik yuz bersa
+  if (appError || empError) return <div>Xatolik yuz berdi!</div>;
+
+  // InfoCard ma'lumotlari
+  const InfoCardData = [
     {
       id: 0,
       title: "hozirgi mablag'",
       value: 2257.81,
-      compare: "+55%"
+      compare: "+55%",
     },
     {
       id: 1,
       title: "Ishchilar",
-      value: employeLength,
+      value: employe.length,
     },
     {
       id: 2,
       title: "Arizalar",
-      value: appsLen
+      value: applications.length,
     },
     {
       id: 3,
       title: "qabul qilingan arizalar",
-      value: accepts.length
-    }
-  ]
+      value: acceptedApplications.length,
+    },
+  ];
 
   return (
     <div className='grid items-center grid-cols-4 gap-3 w-full mt-4 mb-6 pr-4'>
-      {
-        InfoCardData.map((itm, idx) => {
-          return (
-            <InfoCard key={idx + 1} {...itm} />
-          )
-        })}
+      {InfoCardData.map((itm) => {
+        return (
+          <InfoCard key={itm.id} title={itm.title} value={itm.value} />
+        )
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default InfoCards
+export default InfoCards;
