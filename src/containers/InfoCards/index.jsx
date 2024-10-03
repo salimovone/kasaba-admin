@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import InfoCard from '../../components/InfoCard'
 import Axios from '../../services/Axios'
+import { InfoCard } from '../../components'
 
 const InfoCards = () => {
   const [appsLen, setAppsLen] = useState(0)
@@ -12,7 +12,7 @@ const InfoCards = () => {
       await Axios("/application/")
         .then((response) => {
           setAppsLen(response.data.length)
-          setAccepts(response.data.filter(e=>e.status === "ad"))
+          setAccepts(response.data.filter(e => e.status === "ad"))
         })
     } catch (err) {
       throw new Error("error: " + err.message)
@@ -23,12 +23,12 @@ const InfoCards = () => {
     try {
       await Axios("/employe/")
         .then((response) => {
-          setEmployeLength(response.data.length)          
+          setEmployeLength(response.data.length)
         })
     } catch (err) {
       throw new Error("error: " + err.message)
     }
-  } 
+  }
 
 
   useEffect(() => {

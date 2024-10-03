@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Axios from '../../services/Axios';
-import LastNews from '../../components/LastNews';
-import AddNews from '../../components/AddNews';
 import { useNavigate } from 'react-router-dom';
 import { getCookie } from '../../services/helper';
-import Loading from '../../components/Loading';
+import { AddNews, LastNews, Loading } from '../../components';
 
 const News = () => {
     const [data, setData] = useState([]);

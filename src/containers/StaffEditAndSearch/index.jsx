@@ -1,7 +1,5 @@
 import React from 'react';
-import AddStaffElement from '../../components/AddStaffElement';
-import StaffSearch from '../../components/StaffSearch';
-import StaffNotVerified from '../../components/StaffNotVrified';
+import { AddStaffElement, StaffSearch, StaffNotVerified } from '../../components';
 
 const StaffEditAndSearch = () => {
     return (

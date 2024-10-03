@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getCookie } from '../../services/helper';
 import Axios from '../../services/Axios';
-import EditNewsCard from '../../components/EditNewsCard';
-import Loading from '../../components/Loading';
+import { EditNewsCard, Loading } from '../../components';
 
 const EditNews = () => {
     const [data, setData] = useState([]);

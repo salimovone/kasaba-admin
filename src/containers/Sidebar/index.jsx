@@ -1,7 +1,7 @@
 import React from 'react';
 import routes from '../../routers/routes';
-import NavItem from '../../components/NavItem';
 import { useSignOut } from 'react-auth-kit';
+import { NavItem } from '../../components';
 
 const Sidebar = () => {
     const signOut = useSignOut();

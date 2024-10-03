@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-// import StaffElement from '../../components/StaffElement';
-import Loading from '../../components/Loading';
 import Axios from '../../services/Axios';
 import { useSelector } from 'react-redux';
 import xodimlar from '../../services/xodimlar';
+import { Loading } from '../../components';
 
 const StaffList = () => {
     const [loading, setLoading] = useState(false);
