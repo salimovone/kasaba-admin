@@ -1,7 +1,6 @@
 import React from 'react';
-import InfoCards from '../../containers/InfoCards';
-import News from '../../containers/News';
-import DashboardArizaTable from '../../components/DashboardArizaTable';
+import { DashboardArizaTAble } from '../../components';
+import { InfoCards, News } from '../../containers';
 
 const Dashboard = () => {
     return (
@@ -9,7 +8,7 @@ const Dashboard = () => {
             <InfoCards />
             <News />
             <div className='mt-10'>
-                <DashboardArizaTable />
+                <DashboardArizaTAble />
             </div>
         </div>
     );

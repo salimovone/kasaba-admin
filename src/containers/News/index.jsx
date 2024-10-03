@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import AboutOrg from '../../components/AboutOrg';
-// import LastNews from '../../components/LastNews';
 import Axios from '../../services/Axios';
 import { useNavigate } from 'react-router-dom';
+import { AboutOrg } from '../../components';
 
 const News = () => {
     const [data, setData] = useState([]);

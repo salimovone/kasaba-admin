@@ -2,13 +2,8 @@ import { BiNews } from "react-icons/bi";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { BiGroup } from "react-icons/bi";
 import { TfiPanel } from "react-icons/tfi";
-import Dashboard from "../pages/Dashboard"
-import Xodimlar from "../pages/Xodimlar";
-import Applications from "../pages/Applications";
-import News from "../pages/News";
-import NewsPage from "../pages/NewsPage";
-import AddNews from "../pages/AddNews";
-import EditNews from "../pages/EditNews";
+import { AddNews, Applications, Dashboard, EditNews, News, NewsPage, Xodimlar } from "../pages";
+
 
 const routes = [
     {

@@ -1,7 +1,6 @@
 import React from 'react';
-import Pagination from '../../components/Pagination';
-import StaffList from '../../containers/StaffList';
-import StaffEditAndSearch from '../../containers/StaffEditAndSearch';
+import { Pagination } from '../../components';
+import { StaffEditAndSearch, StaffList } from '../../containers';
 
 const Xodimlar = () => {
     return (
